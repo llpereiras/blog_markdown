@@ -1,0 +1,28 @@
+<%= form_with(model: post, local: true, class:'well') do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "erros") %> ocorreram ao salvar este post:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="group">
+    <%= form.label :titulo %>
+    <%= form.text_field :titulo, id: :post_titulo, class: 'form-control' %>
+  </div>
+
+  <div class="group">
+    <%= form.label(:texto_md, 'Texto em Markdown <a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a>'.html_safe) %>
+    <%= form.text_area :texto_md, id: :post_texto, class: 'form-control', style: 'height: 250px;' %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= form.submit "Salvar", {class: 'btn btn-success'}%>
+  </div>
+<% end %>

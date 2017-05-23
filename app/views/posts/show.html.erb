@@ -1,0 +1,14 @@
+  <h1>
+    <%= @post.titulo %>
+  </h1>
+<hr>
+<p>
+  <%= @post.texto_html.try(:html_safe) %>
+</p>
+
+<hr>
+<%= link_to 'Voltar', :back %>
+<span class="pull-right">
+    <strong>Publicado</strong> <%= @post.published_at ? l(@post.published_at, format: :short) : '' %>
+</span>
+

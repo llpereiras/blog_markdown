@@ -1,0 +1,11 @@
+<h1>Posts</h1>
+<% @posts.each do |post| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= link_to(post.titulo.html_safe, controller: "posts", action: "show", id: post.id ) %>
+        <span class="pull-right">
+            <strong>Publicado</strong> <%= l(post.published_at, format: :short) %>
+        </span>
+      </div>
+    </div>
+<% end %>
